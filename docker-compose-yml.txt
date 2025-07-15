@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  jellyfin-bulk-editor:
+    image: ghcr.io/YOUR_GITHUB_USERNAME/jellyfin-bulk-user-editor:latest
+    container_name: jellyfin-bulk-editor
+    ports:
+      - "${WEB_PORT:-8081}:80"
+    environment:
+      - TZ=${TZ:-Europe/Paris}
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
