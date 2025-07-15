@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   jellyfin-bulk-editor:
-    image: ghcr.io/YOUR_GITHUB_USERNAME/jellyfin-bulk-user-editor:latest
+    image: ghcr.io/nitroshady4000/jellyfin-bulk-user-editor:latest
     container_name: jellyfin-bulk-editor
     ports:
       - "${WEB_PORT:-8081}:80"
